@@ -10,6 +10,7 @@ import "./configs/passportConfig.mjs";
 // Routes
 import authRoutes from "./routes/auth.mjs";
 import userRoutes from "./routes/user.mjs";
+import postRoutes from "./routes/post.mjs";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -22,7 +23,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 20000 } // 20sec
+  cookie: { maxAge: 60000 * 10 } // 10mins
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -30,6 +31,7 @@ app.use(passport.session());
 //----- Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 //----- Server Connection
 app.listen(PORT, () => {
