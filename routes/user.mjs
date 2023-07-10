@@ -7,7 +7,18 @@ import User from "../models/userModel.mjs";
 const userRoutes = express.Router();
 
 userRoutes.route("/")
-//----- Create new user
+//----- Retrieve all users
+.get((req, res) => {
+  User.find({})
+  .then(allDocs => {
+    res.json({
+      success: true,
+      users: allDocs
+    });
+  })
+  .catch(err => console.log(err));
+})
+//----- Create user
 .post((req, res) => {
   // Encrypt password
   bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -22,9 +33,9 @@ userRoutes.route("/")
         user: savedDoc
       })
     })
-    .catch(e => {
+    .catch(err => {
       let errorMsg = "An error has occurred";
-      if(e.code === 1100) {
+      if(err.code === 1100) {
         errorMsg = "Username has already been taken";
       }
       
@@ -34,6 +45,19 @@ userRoutes.route("/")
       })
     });
   });
+});
+
+userRoutes.route("/:id")
+//----- Retrieve user
+.get((req, res) => {
+  User.findById(req.params.id)
+  .then(doc => {
+    res.json({
+      success: true,
+      user: doc
+    });
+  })
+  .catch(err => console.log(err));
 });
 
 export default userRoutes;
