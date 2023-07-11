@@ -32,6 +32,19 @@ postRoutes.route("/")
   .catch(err => console.log(err));
 });
 
+postRoutes.route("/:id")
+//----- Retrieve post
+.get((req, res) => {
+  Post.findById(req.params.id)
+  .then(docs => {
+    res.json({
+      success: true,
+      post: docs
+    });
+  })
+  .catch(err => console.log(err));
+});
+
 postRoutes.route("/user/:id")
 //----- Retrieve all user posts
 .get((req, res) => {

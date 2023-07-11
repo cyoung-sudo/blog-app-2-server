@@ -11,6 +11,8 @@ import "./configs/passportConfig.mjs";
 import authRoutes from "./routes/auth.mjs";
 import userRoutes from "./routes/user.mjs";
 import postRoutes from "./routes/post.mjs";
+import likeRoutes from "./routes/like.mjs";
+import dislikeRoutes from "./routes/dislike.mjs";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -32,6 +34,8 @@ app.use(passport.session());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/likes", likeRoutes);
+app.use("/api/dislikes", dislikeRoutes);
 
 //----- Server Connection
 app.listen(PORT, () => {
