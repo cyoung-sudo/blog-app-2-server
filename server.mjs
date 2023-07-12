@@ -13,6 +13,7 @@ import userRoutes from "./routes/user.mjs";
 import postRoutes from "./routes/post.mjs";
 import likeRoutes from "./routes/like.mjs";
 import dislikeRoutes from "./routes/dislike.mjs";
+import commentRoutes from "./routes/comment.mjs";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -36,6 +37,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/dislikes", dislikeRoutes);
+app.use("/api/comments", commentRoutes);
 
 //----- Server Connection
 app.listen(PORT, () => {
