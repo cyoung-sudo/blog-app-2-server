@@ -44,6 +44,16 @@ likeRoutes.route("/post/:id")
     });
   })
   .catch(err => console.log(err));
+})
+//----- Delete all post likes
+.delete((req, res) => {
+  Like.deleteMany({
+    postId: req.params.id
+  })
+  .then(deleteCount => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
 });
 
 export default likeRoutes;

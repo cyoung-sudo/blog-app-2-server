@@ -43,6 +43,14 @@ postRoutes.route("/:id")
     });
   })
   .catch(err => console.log(err));
+})
+//----- Delete post
+.delete((req, res) => {
+  Post.findByIdAndDelete(req.params.id)
+  .then(deletedDoc => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
 });
 
 postRoutes.route("/user/:id")
