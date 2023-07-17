@@ -56,4 +56,16 @@ likeRoutes.route("/post/:id")
   .catch(err => console.log(err));
 });
 
+likeRoutes.route("/user/:id")
+//----- Delete all user likes
+.delete((req, res) => {
+  Like.deleteMany({
+    userId: req.params.id
+  })
+  .then(deleteCount => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
+});
+
 export default likeRoutes;

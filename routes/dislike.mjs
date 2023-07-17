@@ -56,4 +56,16 @@ dislikeRoutes.route("/post/:id")
   .catch(err => console.log(err));
 });
 
+dislikeRoutes.route("/user/:id")
+//----- Delete all user dislikes
+.delete((req, res) => {
+  Dislike.deleteMany({
+    userId: req.params.id
+  })
+  .then(deleteCount => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
+});
+
 export default dislikeRoutes;

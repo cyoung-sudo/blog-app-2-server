@@ -43,4 +43,16 @@ commentRoutes.route("/post/:id")
   .catch(err => console.log(err));
 });
 
+commentRoutes.route("/user/:id")
+//----- Delete all user comments
+.delete((req, res) => {
+  Comment.deleteMany({
+    userId: req.params.id
+  })
+  .then(deleteCount => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
+});
+
 export default commentRoutes;

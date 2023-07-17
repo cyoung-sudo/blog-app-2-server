@@ -58,6 +58,13 @@ userRoutes.route("/:id")
     });
   })
   .catch(err => console.log(err));
+})
+//----- Delete user
+.delete((req, res) => {
+  User.findByIdAndDelete(req.params.id)
+  .then(deletedDoc => {
+    res.json({ success: true });
+  })
 });
 
 export default userRoutes;

@@ -67,5 +67,15 @@ postRoutes.route("/user/:id")
   })
   .catch(err => console.log(err));
 })
+//----- Delete all user posts
+.delete((req, res) => {
+  Post.deleteMany({
+    userId: req.params.id
+  })
+  .then(deleteCount => {
+    res.json({ success: true });
+  })
+  .catch(err => console.log(err));
+});
 
 export default postRoutes;
