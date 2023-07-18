@@ -47,10 +47,7 @@ authRoutes.get("/authUser", (req, res) => {
       user: req.user
     });
   } else {
-    res.json({
-      success: false,
-      message: "No session found"
-    });
+    res.json({ success: false });
   }
 });
 

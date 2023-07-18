@@ -23,12 +23,16 @@ likeRoutes.route("/")
       .then(savedDoc => {
         res.json({ success: true });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        res.json({ success: false });
+      });
     } else {
       res.json({ success: true });
     }
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 likeRoutes.route("/post/:id")
@@ -43,7 +47,9 @@ likeRoutes.route("/post/:id")
       count: docs.length
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Delete all post likes
 .delete((req, res) => {
@@ -53,7 +59,9 @@ likeRoutes.route("/post/:id")
   .then(deleteCount => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 likeRoutes.route("/user/:id")
@@ -65,7 +73,9 @@ likeRoutes.route("/user/:id")
   .then(deleteCount => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 export default likeRoutes;

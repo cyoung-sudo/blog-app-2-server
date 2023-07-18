@@ -16,7 +16,9 @@ userRoutes.route("/")
       users: allDocs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Create user
 .post((req, res) => {
@@ -34,15 +36,15 @@ userRoutes.route("/")
       })
     })
     .catch(err => {
-      let errorMsg = "An error has occurred";
-      if(err.code === 1100) {
+      let errorMsg = "An error has occured";
+      if(err.code === 11000) {
         errorMsg = "Username has already been taken";
       }
       
       res.json({
         success: false,
         message: errorMsg
-      })
+      });
     });
   });
 });
@@ -57,7 +59,9 @@ userRoutes.route("/:id")
       user: doc
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Delete user
 .delete((req, res) => {
@@ -65,6 +69,9 @@ userRoutes.route("/:id")
   .then(deletedDoc => {
     res.json({ success: true });
   })
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 export default userRoutes;

@@ -15,7 +15,9 @@ commentRoutes.route("/")
   .then(savedDoc => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 commentRoutes.route("/post/:id")
@@ -30,7 +32,9 @@ commentRoutes.route("/post/:id")
       comments: allDocs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Delete all post comments
 .delete((req, res) => {
@@ -40,7 +44,9 @@ commentRoutes.route("/post/:id")
   .then(deleteCount => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 commentRoutes.route("/user/:id")
@@ -52,7 +58,9 @@ commentRoutes.route("/user/:id")
   .then(deleteCount => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 export default commentRoutes;

@@ -23,12 +23,16 @@ followRoutes.route("/")
       .then(savedDoc => {
         res.json({ success: true });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        res.json({ success: false });
+      });
     } else {
       res.json({ success: true });
     }
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 followRoutes.route("/follower/:id")
@@ -43,7 +47,9 @@ followRoutes.route("/follower/:id")
       followed: docs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 followRoutes.route("/followed/:id")
@@ -58,7 +64,9 @@ followRoutes.route("/followed/:id")
       followers: docs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 followRoutes.route("/user/:id")
@@ -77,7 +85,9 @@ followRoutes.route("/user/:id")
   .then(deleteCount => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 export default followRoutes;

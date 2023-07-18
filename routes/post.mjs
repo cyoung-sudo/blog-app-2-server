@@ -14,7 +14,9 @@ postRoutes.route("/")
       posts: allDocs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Create post
 .post((req, res) => {
@@ -29,7 +31,9 @@ postRoutes.route("/")
       post: savedDoc
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 postRoutes.route("/:id")
@@ -42,7 +46,9 @@ postRoutes.route("/:id")
       post: docs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Delete post
 .delete((req, res) => {
@@ -50,7 +56,9 @@ postRoutes.route("/:id")
   .then(deletedDoc => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 postRoutes.route("/user/:id")
@@ -65,7 +73,9 @@ postRoutes.route("/user/:id")
       posts: allDocs
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 })
 //----- Delete all user posts
 .delete((req, res) => {
@@ -75,7 +85,9 @@ postRoutes.route("/user/:id")
   .then(deleteCount => {
     res.json({ success: true });
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    res.json({ success: false });
+  });
 });
 
 export default postRoutes;
