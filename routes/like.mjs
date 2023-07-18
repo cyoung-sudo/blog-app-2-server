@@ -41,10 +41,10 @@ likeRoutes.route("/post/:id")
   Like.find({
     postId: req.params.id
   })
-  .then(docs => {
+  .then(allDocs => {
     res.json({
       success: true,
-      count: docs.length
+      count: allDocs.length
     });
   })
   .catch(err => {
@@ -65,6 +65,21 @@ likeRoutes.route("/post/:id")
 });
 
 likeRoutes.route("/user/:id")
+//----- Retrieve all user likes
+.get((req, res) => {
+  Like.find({
+    userId: req.params.id
+  })
+  .then(allDocs => {
+    res.json({ 
+      success: true,
+      likes: allDocs
+    });
+  })
+  .catch(err => {
+    res.json({ success: false });
+  });
+})
 //----- Delete all user likes
 .delete((req, res) => {
   Like.deleteMany({

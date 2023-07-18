@@ -41,10 +41,10 @@ followRoutes.route("/follower/:id")
   Follow.find({
     followerId: req.params.id
   })
-  .then(docs => {
+  .then(allDocs => {
     res.json({
       success: true,
-      followed: docs
+      followed: allDocs
     });
   })
   .catch(err => {
@@ -58,10 +58,10 @@ followRoutes.route("/followed/:id")
   Follow.find({
     followedId: req.params.id
   })
-  .then(docs => {
+  .then(allDocs => {
     res.json({
       success: true,
-      followers: docs
+      followers: allDocs
     });
   })
   .catch(err => {

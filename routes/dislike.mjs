@@ -41,10 +41,10 @@ dislikeRoutes.route("/post/:id")
   Dislike.find({
     postId: req.params.id
   })
-  .then(docs => {
+  .then(allDocs => {
     res.json({
       success: true,
-      count: docs.length
+      count: allDocs.length
     });
   })
   .catch(err => {
@@ -65,6 +65,21 @@ dislikeRoutes.route("/post/:id")
 });
 
 dislikeRoutes.route("/user/:id")
+//----- Retrieve all user dislikes
+.get((req, res) => {
+  Dislike.find({
+    userId: req.params.id
+  })
+  .then(allDocs => {
+    res.json({
+      success: true,
+      dislikes: allDocs
+    });
+  })
+  .catch(err => {
+    res.json({ success: false });
+  });
+})
 //----- Delete all user dislikes
 .delete((req, res) => {
   Dislike.deleteMany({

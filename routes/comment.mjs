@@ -50,6 +50,21 @@ commentRoutes.route("/post/:id")
 });
 
 commentRoutes.route("/user/:id")
+//----- Retrieve all user comments
+.get((req, res) => {
+  Comment.find({
+    userId: req.params.id
+  })
+  .then(allDocs => {
+    res.json({
+      success: true,
+      comments: allDocs
+    });
+  })
+  .catch(err => {
+    res.json({ success: false });
+  });
+})
 //----- Delete all user comments
 .delete((req, res) => {
   Comment.deleteMany({
