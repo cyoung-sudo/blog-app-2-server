@@ -44,7 +44,7 @@ dislikeRoutes.route("/post/:id")
   .then(allDocs => {
     res.json({
       success: true,
-      count: allDocs.length
+      dislikes: allDocs
     });
   })
   .catch(err => {

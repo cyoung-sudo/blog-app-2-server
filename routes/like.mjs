@@ -44,7 +44,7 @@ likeRoutes.route("/post/:id")
   .then(allDocs => {
     res.json({
       success: true,
-      count: allDocs.length
+      likes: allDocs
     });
   })
   .catch(err => {
