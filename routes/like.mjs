@@ -50,18 +50,6 @@ likeRoutes.route("/post/:id")
   .catch(err => {
     res.json({ success: false });
   });
-})
-//----- Delete all post likes
-.delete((req, res) => {
-  Like.deleteMany({
-    postId: req.params.id
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
 });
 
 likeRoutes.route("/user/:id")
@@ -75,18 +63,6 @@ likeRoutes.route("/user/:id")
       success: true,
       likes: allDocs
     });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
-})
-//----- Delete all user likes
-.delete((req, res) => {
-  Like.deleteMany({
-    userId: req.params.id
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
   })
   .catch(err => {
     res.json({ success: false });

@@ -35,18 +35,6 @@ commentRoutes.route("/post/:id")
   .catch(err => {
     res.json({ success: false });
   });
-})
-//----- Delete all post comments
-.delete((req, res) => {
-  Comment.deleteMany({
-    postId: req.params.id
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
 });
 
 commentRoutes.route("/user/:id")
@@ -60,18 +48,6 @@ commentRoutes.route("/user/:id")
       success: true,
       comments: allDocs
     });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
-})
-//----- Delete all user comments
-.delete((req, res) => {
-  Comment.deleteMany({
-    userId: req.params.id
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
   })
   .catch(err => {
     res.json({ success: false });

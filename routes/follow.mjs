@@ -69,25 +69,4 @@ followRoutes.route("/followed/:id")
   });
 });
 
-followRoutes.route("/user/:id")
-//----- Delete all user follows & followers
-.delete((req, res) => {
-  Follow.deleteMany({
-    $or: [
-      {
-        followerId: req.params.id
-      },
-      {
-        followedId: req.params.id
-      }
-    ]
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
-});
-
 export default followRoutes;

@@ -50,18 +50,6 @@ dislikeRoutes.route("/post/:id")
   .catch(err => {
     res.json({ success: false });
   });
-})
-//----- Delete all post dislikes
-.delete((req, res) => {
-  Dislike.deleteMany({
-    postId: req.params.id
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
 });
 
 dislikeRoutes.route("/user/:id")
@@ -75,18 +63,6 @@ dislikeRoutes.route("/user/:id")
       success: true,
       dislikes: allDocs
     });
-  })
-  .catch(err => {
-    res.json({ success: false });
-  });
-})
-//----- Delete all user dislikes
-.delete((req, res) => {
-  Dislike.deleteMany({
-    userId: req.params.id
-  })
-  .then(deleteCount => {
-    res.json({ success: true });
   })
   .catch(err => {
     res.json({ success: false });
