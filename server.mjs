@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5050;
 const app = express();
 
 //----- Middleware
-app.use(cors());
+app.use(cors({ origin : "*"}));
 app.use(express.json());
 // Authentication
 app.use(session({
