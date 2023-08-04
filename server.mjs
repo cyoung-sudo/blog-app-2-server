@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import { connectToDB } from "./db/conn.mjs";
+import helmet from "helmet";
 // Authentication
 import passport from "passport";
 import session from "express-session";
@@ -20,8 +21,9 @@ const PORT = process.env.PORT || 5050;
 const app = express();
 
 //----- Middleware
-app.use(cors({ origin : "*"}));
+app.use(cors());
 app.use(express.json());
+app.use(helmet());
 // Authentication
 app.use(session({
   secret: process.env.SESSION_SECRET,
