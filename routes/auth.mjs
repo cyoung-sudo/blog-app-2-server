@@ -41,6 +41,8 @@ authRoutes.delete("/logout", (req, res, next) => {
 
 //----- Retrieve authenticated user
 authRoutes.get("/authUser", (req, res) => {
+  console.log("-----")
+  console.log(req.session)
   if(req.isAuthenticated()) {
     res.json({
       success: true,
