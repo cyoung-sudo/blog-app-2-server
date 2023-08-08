@@ -22,7 +22,8 @@ const app = express();
 
 //----- Middleware
 app.use(cors({
-  origin: process.env.CLIENT
+  origin: process.env.CLIENT,
+  credentials: true
 }));
 app.use(express.json());
 app.use(helmet());
