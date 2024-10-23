@@ -45,6 +45,10 @@ app.use("/api/likes", likeRoutes);
 app.use("/api/dislikes", dislikeRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/follows", followRoutes);
+// Ping to wakeup server
+app.get("api/ping", (req, res) => {
+  res.json({ success: true });
+});
 
 //----- Server Connection
 app.listen(PORT, () => {
